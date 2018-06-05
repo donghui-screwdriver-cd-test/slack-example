@@ -1,0 +1,16 @@
+version: 4
+shared:
+    image: node:8
+    settings:
+        slack: slack-example
+
+jobs:
+    main:
+        requires: [~pr, ~commit]
+        steps:
+            - pass: echo passing the job
+    deploy:
+        requires: [main]
+        steps:
+            - fail: echo failing the job; false
+
